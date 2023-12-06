@@ -15,29 +15,38 @@ function TransactionsList() {
   const filteredTransactions = transactions.filter((transaction) =>
     transaction.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  // setSearchTerm("");
+  console.log(filteredTransactions);
   return (
-    <table className="ui celled striped padded table">
-      <tbody>
-        <tr>
-          <th>
-            <h3 className="ui center aligned header">Date</h3>
-          </th>
-          <th>
-            <h3 className="ui center aligned header">Description</h3>
-          </th>
-          <th>
-            <h3 className="ui center aligned header">Category</h3>
-          </th>
-          <th>
-            <h3 className="ui center aligned header">Amount</h3>
-          </th>
-        </tr>
-        {filteredTransactions.map((transaction) => (
-          <Transaction key={transaction.id} transaction={transaction} />
-        ))}
-      </tbody>
-    </table>
+    <div>
+      <input
+        type="text"
+        placeholder="Search by description..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <table className="ui celled striped padded table">
+        <tbody>
+          <tr>
+            <th>
+              <h3 className="ui center aligned header">Date</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Description</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Category</h3>
+            </th>
+            <th>
+              <h3 className="ui center aligned header">Amount</h3>
+            </th>
+          </tr>
+          {filteredTransactions.map((transaction) => (
+            <Transaction key={transaction.id} transaction={transaction} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
